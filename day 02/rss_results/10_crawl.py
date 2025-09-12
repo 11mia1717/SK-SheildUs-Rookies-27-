@@ -11,15 +11,33 @@ url = "https://www.malware-traffic-analysis.net/2023/index.html"
 
 header_info = {'User-agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36'}
 
-r = requests.get(url, headers=header_info)
+#r = requests.get(url, headers=header_info, verify = False) #verify 인증서문제가 생기면 넣어야
+r = requests.get(url, headers=header_info) 
+
 soup = BeautifulSoup(r.text, 'html.parser')
 
-titles = soup.select("#main_content > div.content > ul > li > a.main_menu")
-title_urls = soup.find_all("a")
+#titles = soup.select("#main_content > div.content > ul > li > a.main_menu")
+tags = soup.select("#main_content > div.content > ul > li > a.main_menu")
+results = [] ##리스트 생성
+#title_urls = soup.find_all("a")
 
+"""
 with open('malware_url.txt', 'w', encoding='utf-8') as file:
     for title, title_url in zip(titles, title_urls):
         file.write(f"제목 : {title.text}\n")
         file.write(f"주소 : https://www.malware-traffic-analysis.net/2023/{title.get('href')}\n")
         print(f"제목 : {title.text}")
         print(f"주소 : https://www.malware-traffic-analysis.net/2023/{title.get('href')}")
+"""
+
+for tag in tags:
+    link_text = tag.text
+    #link_href = tag.get('href')
+    link_href = f"https://www.malware-traffic-analysis.net/2023/{tag.get('href')}"
+    results.append(f"{link_text}\n{link_href}\n")
+    
+    print(results)
+
+with open('malwares.txt', 'w', encoding='utf-8') as file:
+    for result in results: #리스트를 하나씩 작성
+        file.write(result)
