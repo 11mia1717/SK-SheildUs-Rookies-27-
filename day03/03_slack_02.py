@@ -2,8 +2,8 @@ from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
 # Slack API 토큰과 메시지를 보낼 채널 설정
-SLACK_API_TOKEN = "xoxb-9502554741763-9506588087618-cTrNl3twMC7MCtx61S9EUgq8" #Api페이지에서의 Oauth 토큰값
-SLACK_CHANNEL = "C09EWG63HC2" #채널세부정보의 채널ID값
+SLACK_API_TOKEN = "" #Api페이지에서의 Oauth 토큰값
+SLACK_CHANNEL = "" #채널세부정보의 채널ID값
 
 def send_message(channel, text):
     # WebClient 인스턴스 생성

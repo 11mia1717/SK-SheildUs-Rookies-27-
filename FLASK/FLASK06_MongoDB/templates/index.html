@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSS 조회 결과</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <h1>쇼단 결과 페이지</h1>
+    <table border="1">
+        <tr>
+            <td>IP</td>
+            <td>Port</td>
+            <td>Organization</td>
+            <td>Location</td>
+            <td>Hostnames</td>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{result.ip}}</td>
+            <td>{{result.port}}</td>
+            <td>{{result.org}}</td>
+            <td>{{result.location}}</td>
+            <td>{{result.hostsames}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

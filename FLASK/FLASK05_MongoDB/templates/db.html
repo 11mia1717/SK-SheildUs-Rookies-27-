@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+    <title>db</title>
+</head>
+<body>
+    <form method="post">
+        <table border="1">
+            <tr>
+                <td>이름</td>
+                <td>주소</td>
+                <td>이메일 주소</td>
+                <td>핸드폰 번호</td>
+                <td>삭제</td>
+            </tr>
+            {% for person in people %}
+            <tr>
+                <td>{{person.name}}</td>
+                <td>{{person.address}}</td>
+                <td>{{person.email}}</td>
+                <td>{{person.phone}}</td>
+                <td><a href="{{url_for('delete_user',user_id=person._id)}}">삭제</a></td>
+                <!-- 이거도 되려나<td><button type="submit" name="user_id" value="{{person.id}}">삭제</button></td>--!>
+            </tr>
+            {% endfor %}
+        </table>
+        
+    </form>
+</body>
+</html>
