@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Service</title>
+</head>
+<body>
+    <h1>번역 서비스</h1>
+    <h2>파일을 첨부하세요</h2>
+    <!--파일을 업로드시 꼭 필요한 속성, 데이터가 서버로 전송될 때 인코딩 방식을 지정-->
+    <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data"> 
+        
+        <input type="file" name="file"><br>
+        <input type="submit" value="번역하기"><!--버튼태그와 비슷함-->
+    </form>
+</body>
+</html>

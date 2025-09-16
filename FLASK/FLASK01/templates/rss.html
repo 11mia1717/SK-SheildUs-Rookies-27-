@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSS Result Page</title>
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='style.css')}}">
+</head>
+<body>
+    <p><h1><font color='blue'>RSS 결과 페이지</font></h1></p>
+    <!--가져온 결과페이지를 버튼클릭 시 엑셀로 보내기, 메일로 보내기 기능도 구현 가능-->
+    <table border="1">
+        <!--tr행, td열-->
+        <tr>
+            <td>제목</td>
+            <td>링크</td>
+            <td>요약</td>
+        </tr>
+        <!--플라스크의 반복문 for 구문-->
+        {% for entry in feed.entries %} <!--플라스크의 반복문 for 구문-->
+        <tr>
+            <td>{{ entry.title }}</td>
+            <td><a href="{{ entry.link }}">{{ entry.link }}</a></td>
+            <td>{{ entry.description }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

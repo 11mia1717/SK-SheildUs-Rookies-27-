@@ -1,0 +1,32 @@
+from slack_sdk import WebClient
+from slack_sdk.errors import SlackApiError
+#import os
+
+#print(os.getcwd())  # 현재 작업 경로 확인
+#print(os.path.exists("list.txt"))
+
+
+# Slack API 토큰과 메시지를 보낼 채널 설정
+SLACK_API_TOKEN = "xoxb-9502554741763-9506588087618-cTrNl3twMC7MCtx61S9EUgq8" #Api페이지에서의 Oauth 토큰값
+SLACK_CHANNEL = "C09EWG63HC2" #채널세부정보의 채널ID값
+# 채널 접근 후 URL 뒤에서 확인 가능
+
+def upload_file(channel, file_path, message):
+    # WebClient 인스턴스 생성
+    client = WebClient(token=SLACK_API_TOKEN)
+    
+    try:
+        # 파일을 Slack 채널에 업로드하고, 해당 파일에 메시지를 추가합니다.
+        response = client.files_upload_v2(
+            channel=channel, 
+            file=file_path,
+            initial_comment=message
+        )
+        # 업로드 성공 메시지 출력
+        print("File uploaded successfully:", response["file"]["name"])
+    except SlackApiError as e:
+        # 에러 처리
+        print("Error uploading file:", e.response["error"])
+
+# 파일 업로드 및 메시지 전송 함수 호출
+upload_file(SLACK_CHANNEL, "text.xlsx", "Here is the file you requested!")

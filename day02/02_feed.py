@@ -12,9 +12,9 @@ import pandas as pd #pd로 이름한다
 url = "https://www.dailysecu.com/rss/allArticle.xml"
 
 feed = feedparser.parse(url)
-#print(feed)
+print(feed)
 
-#링크 정의
+#리스트 정의
 titles = []
 links = []
 descriptions = []
@@ -33,7 +33,12 @@ for entry in feed.entries: #기사 한개 한개
 #print(pubDates)    #['2025-09-12 09:40:58', '2025-09-12 09:22:37']
 
 
-data = {"제목": titles, "링크": links, "요약": descriptions, "작성자": authors, "날짜":pubDates}
+data = {
+    "제목": titles, 
+    "링크": links, 
+    "요약": descriptions, 
+    "작성자": authors, 
+    "날짜":pubDates}
 
 #표? 처럼 만들기 위해 pandas 사용
 df = pd.DataFrame(data)

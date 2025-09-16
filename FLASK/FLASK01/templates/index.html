@@ -1,0 +1,22 @@
+<!--!를 이용해 기본 코드를 작성-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSS Viewer Service</title>
+    
+</head>
+<body>
+    <p><h1><font color='blue'>RSS 뷰어 서비스입니다.</font></h1></p>
+    <form method="post" action="{{url_for('rss')}}"> <!--rss()함수쪽으로 데이터가 이동--> 
+    <!--게시물, 메세지 등등이 모두 폼!
+        form, submit, action 묶어서 기억하기-->    
+        <b>RSS 주소를 입력하세요.</b> <br>
+        <input type="text" name="rss_url" size="50"><br>
+        <button type="submit">확인</button>   
+    </form>
+
+</body>
+</html>
+
