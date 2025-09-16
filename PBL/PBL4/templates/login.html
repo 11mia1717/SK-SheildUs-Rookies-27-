@@ -1,0 +1,24 @@
+<!-- 로그인페이지를 생성하여 사용자가 FTP 서버의 아이피 주소, 사용자 이름, 비밀번호를 입력할 수 있도록 합니다-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTP Login Page</title>
+    <!--css정보를 읽어옴-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='style.css')}}">    
+</head>
+<body>
+    <p><h1><font color = 'blue'>FTP 파일 리스트 조회 서비스</font></h1></p>
+    <form method="POST" action="{{url_for('ftp_login')}}"> <!--login()함수로 데이터를 이동--> 
+        <h3><b>FTP 서버 로그인 정보를 입력해주세요.</b></h3>
+        서버 IP 주소 : <input type="text" name="ip_addr" size="20"><br>
+        서버 사용자 이름 : <input type="text" name="user_name" size="20"><br>
+        서버 사용자 비밀번호 : <input type="text" name="user_pw" size="20"><br>
+        <input type="submit" value="로그인 하기">
+        {% if msg %}
+        <div class="alert alert-danger">{{ msg }}</div>
+        {% endif %}   
+    </form>    
+</body>
+</html>

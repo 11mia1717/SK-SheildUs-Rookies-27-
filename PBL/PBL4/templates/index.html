@@ -1,0 +1,24 @@
+<!--파일 목록 페이지를 만들어 로그인 성공 시 FTP서버의 파일 목록을 출력-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTP File List</title>
+    <!--css정보를 읽어옴-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='style.css')}}">    
+</head>
+<body>
+     <p><h1><font color = 'blue'>FTP 파일 리스트 조회 결과</font></h1></p>
+     <table border = "1">
+        <tr>
+            <ul>
+            {% for file in file_list %}
+                <li>{{ file }}</li>
+             {% endfor %}    
+            </ul>
+        </tr>    
+     </table>
+    </form>   
+</body>
+</html>
